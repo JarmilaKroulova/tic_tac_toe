@@ -1,0 +1,217 @@
+Testovací plán pro Tic Tac Toe
+______________________________________
+
+Skript slouží pro hraní piškvorek ve dvojici, nebo proti počítači, přičemž proti počítači lze vybrat obtížnost hraní ze dvou možností.
+
+Cíle testování: Ověření správné funkčnosti programu a jeho funkcí 
+                Ověření kontroly neplatných vstupů
+Rozsah testování: Pokrytí všech funkcí - testy funkční, integrační,  pozitivní, negativní
+                Netestuje se vizuální stránka programu
+Testovací strategie: Jednotkové manuální testování - testování na základě pokrytí, ad-hoc testování
+Testovací prostředí: Lokální
+
+Tento testovací plán obsahuje testovací případy (TC) pro každou funkci ve skriptu. 
+Funkce jsou - hlavni_hra TC01 - TC04 
+	- pocet_hracu TC05 – TC06
+        - zobraz_herni_plochu TC07 
+        - uvitani TC08
+        - vyber_obtiznost TC09 – TC10
+	- tah_hrace TC02, TC11
+	- tah_pocitace_chytre TC12
+	- kontrola_vyhry TC13 – TC14
+	
+__________________________________________________________________________________________
+
+TC01: Ověření funkčnosti programu - pozitivní test
+
+Popis: Ověření, že program zobrazí uvítání, a spustí hru
+Vstupní podmínky: Program nezapočal
+Kroky testu: 1. Spusťte program
+	2. Ověřte, že se zobrazuje uvítání s možností výběru počtu hráčů
+	3. Napište 2 a potvrďte stisknutím klávesy Enter
+	4. Ověřte, že se zobrazuje hrací pole
+Očekávaný výsledek: Program vás přivítá a nabídne možnost výběru počtu hráčů, po výběru spustí hru
+Skutečný výsledek: Program provedl kroky dle zadání
+Stav: Pass
+Poznámky: Tento případ kontroluje základní funkčnost programu
+__________________________________________________________________________________________
+
+TC02: Ověření funkčnosti programu - pozitivní test
+
+Popis: Ověření, že program zapíše značku na zvolené pole
+Vstupní podmínky: Program je spuštěn pro dva hráče, zobrazuje se herní plocha a výzva k zadání čísla
+Kroky testu: 1. Napište 2 a potvrďte stisknutím klávesy Enter
+	2. Ověřte, že se na pole číslo 2 zapsala značka o
+	3. Napište 5 a potvrďte stisknutím klávesy Enter
+	4. Ověřte, že se na pole číslo 5 zapsala značka x
+Očekávaný výsledek: Program zapíše značku na zvolené pole
+Skutečný výsledek: Program provedl kroky dle zadání
+Stav: Pass
+Poznámky: Tento případ kontroluje základní funkčnost programu
+__________________________________________________________________________________________
+
+TC03: Ověření funkčnosti programu - pozitivní test
+
+Popis: Ověření, že program se ukončí při zadání možnosti ukončit
+Vstupní podmínky: Program je spuštěn pro dva hráče, zobrazuje se herní plocha a výzva k zadání čísla
+Kroky testu: 1. Napište q a potvrďte stisknutím klávesy Enter
+	2. Ověřte, že se program ukončí
+Očekávaný výsledek: Program se ukončí
+Skutečný výsledek: Program vypsal: "Terminate the game." a ukončil se
+Stav: Pass
+Poznámky: Tento případ kontroluje základní funkčnost programu
+__________________________________________________________________________________________
+
+TC04: Ověření funkčnosti programu - pozitivní test
+
+Popis: Ověření, že program se ukončí při dohrání hry
+Vstupní podmínky: Program je spuštěn pro dva hráče, zobrazuje se herní plocha a výzva k zadání čísla
+Kroky testu: 1.Napište 2 a potvrďte stisknutím klávesy Enter
+	2. Napište 5 a potvrďte stisknutím klávesy Enter
+	3. Napište 3 a potvrďte stisknutím klávesy Enter
+	4. Napište 6 a potvrďte stisknutím klávesy Enter
+	5. Napište 1 a potvrďte stisknutím klávesy Enter
+	6. Ověřte, že se program ukončí
+Očekávaný výsledek: Program se ukončí
+Skutečný výsledek: Program vypsal: "Congratulation! Player o WON!" a ukončil se
+Stav: Pass
+Poznámky: Tento případ kontroluje základní funkčnost programu
+__________________________________________________________________________________________
+
+TC05: Ověření funkce pocet_hracu() – pozitivní test
+
+Popis: Ověření, že funkce správně přijme vstup 1 a spustí hru proti počítači
+Vstupní podmínky: Program je spuštěn, očekává vstup počtu hráčů
+Kroky testu: 1. Na výzvu "How many players will play (1 or 2)?" napište 1
+	2. Potvrďte stisknutím klávesy Enter
+Očekávaný výsledek: Program spustí hru proti počítači
+Skutečný výsledek: Spustila se hra proti počítači
+Stav: Pass
+Poznámky: Testuje správné vyhodnocení vstupu
+__________________________________________________________________________________________
+
+TC06: Ověření funkce pocet_hracu() – negativní test
+
+Popis: Ověření reakce funkce na neplatný vstup
+Vstupní podmínky: Program je spuštěn, očekává vstup počtu hráčů
+Kroky testu: 1. Zadejte 3 a potvrďte
+	2. Ověřte, že program vypíše "Please enter only 1 or 2."
+	3. Zadejte a a potvrďte
+	4. Ověřte, že program vypíše "Please enter a valid number."
+	5. Nakonec zadejte 2
+Očekávaný výsledek: Program odmítne neplatné vstupy a přijme platnou hodnotu
+Skutečný výsledek: Odpovídá očekávání
+Stav: Pass
+_________________________________________________________________________________________
+
+TC07: Ověření funkce zobraz_herni_plochu() – pozitivní test
+
+Popis: Ověření, že funkce správně zobrazí hrací plochu
+Vstupní podmínky: List ["1","2","3","4","5","6","7","8","9"], separator "+---+---+---+"
+Kroky testu: 1. Zavolejte funkci zobraz_herni_plochu(box, separator)
+	2. Zkontrolujte výstup v konzoli
+Očekávaný výsledek: Zobrazí se pole 3×3 s čísly 1–9 a oddělovacími čarami
+Skutečný výsledek: Odpovídá očekávání
+Stav: Pass
+__________________________________________________________________________________________
+
+TC08: Ověření funkce uvitani()
+
+Popis: Ověření, že se po spuštění vypíše uvítací text a pravidla
+Vstupní podmínky: Program spuštěn
+Kroky testu: 1. Zavolejte funkci uvitani()
+	2. Sledujte výstup v konzoli
+Očekávaný výsledek: Vypíše se nadpis "Welcome to Tic Tac Toe" a text s pravidly hry
+Skutečný výsledek: Odpovídá očekávání
+Stav: Pass
+__________________________________________________________________________________________
+
+TC09: Ověření funkce vyber_obtiznost() – pozitivní test
+
+Popis: Ověření správného výběru obtížnosti
+Vstupní podmínky: Program v režimu hry proti počítači
+Kroky testu: 1. Na výzvu "Choose AI difficulty - (1) Easy, (2) Smart:" napište 1
+	2. Potvrďte Enter
+	3. Poté spusťte znovu a napište 2
+Očekávaný výsledek: V prvním případě funkce vrátí "random". Ve druhém případě "chytry"
+Skutečný výsledek: Odpovídá očekávání
+Stav: Pass
+__________________________________________________________________________________________
+
+TC10: Ověření funkce vyber_obtiznost() – negativní test
+
+Popis: Ověření reakce funkce na neplatný vstup
+Kroky testu: 1. Na výzvu napište 3
+	2. Ověřte, že program vypíše "Please enter 1 or 2."
+	3. Poté zadejte 2
+Očekávaný výsledek: Program odmítne neplatný vstup a přijme platný
+Skutečný výsledek: Odpovídá očekávání
+Stav: Pass
+__________________________________________________________________________________________
+
+TC11: Ověření funkce tah_hrace() – negativní test (obsazené pole)
+
+Popis: Ověření, že funkce neumožní přepsat obsazené pole
+Vstupní podmínky: Na poli je již zapsaná značka na pozici 2
+Kroky testu: 1. Na výzvu napište 2
+	2. Ověřte, že program vypíše "This field is already taken. Try another."
+	3. Zadejte 5
+Očekávaný výsledek: Funkce vyžádá nový vstup
+Skutečný výsledek: Odpovídá očekávání
+Stav: Pass
+__________________________________________________________________________________________
+
+TC12: Ověření funkce tah_pocitace_chytre() – pozitivní test (blokování soupeře)
+
+Popis: Ověření, že počítač rozpozná hrozící výhru soupeře a zablokuje ho
+Vstupní podmínky: Na herním poli: ["x","x","3","4","o","6","7","8","9"], značka "o"
+Kroky testu: 1. Zavolejte tah_pocitace_chytre("o", box)
+	2. Zkontrolujte, že pozice 3 je obsazena "o"
+Očekávaný výsledek: Počítač blokuje výhru soupeře
+Skutečný výsledek: Odpovídá očekávání
+Stav: Pass
+__________________________________________________________________________________________
+
+TC13: Ověření funkce kontrola_vyhry() – pozitivní test
+
+Popis: Ověření, že funkce správně rozpozná výhru hráče
+Vstupní podmínky: box = ["x","x","x","4","o","o","7","8","9"]
+Kroky testu: 1. Zavolejte kontrola_vyhry("x", box)
+	2. Sledujte výstup v konzoli
+Očekávaný výsledek: Funkce vypíše "Congratulation! Player x WON!" a vrátí True
+Skutečný výsledek: Odpovídá očekávání
+Stav: Pass
+__________________________________________________________________________________________
+
+TC14: Ověření funkce kontrola_vyhry() – remíza
+
+Popis: Ověření, že funkce správně rozpozná remízu
+Vstupní podmínky: box = ["x","o","x","x","o","o","o","x","x"]
+Kroky testu: 1. Zavolejte kontrola_vyhry("x", box)
+	2. Sledujte výstup v konzoli
+Očekávaný výsledek: Funkce vypíše "Game over! NO WINNER!" a vrátí True
+Skutečný výsledek: Odpovídá očekávání
+Stav: Pass
+__________________________________________________________________________________________
+
+Shrnutí výsledků testování
+
+Celkem testovacích případů: 14
+Úspěšných (Pass): 14
+Neúspěšných (Fail): 0
+Celková úspěšnost: ✅ 100 %
+
+Závěr
+
+Testování hry Tic Tac Toe proběhlo úspěšně.
+Všechny testované funkce fungují podle očekávání – hra správně zpracovává vstupy, kontroluje chyby, umožňuje hraní proti počítači i hráči, 
+vyhodnocuje výhru a remízu.
+
+Funkce pro kontrolu vstupů (pocet_hracu, vyber_obtiznost, tah_hrace) prokázaly správnou odolnost vůči neplatným vstupům.
+AI logika (tah_pocitace_chytre) úspěšně blokuje soupeře a provádí logické tahy.
+
+Doporučení do budoucna:
+
+Přidat automatizované testy pomocí pytest pro jednodušší regresní testování.
+Doplnit logování tahů do souboru (auditní záznam).
+
