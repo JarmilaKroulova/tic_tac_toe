@@ -1,4 +1,5 @@
 Tic Tac Toe ( Python)
+
 Tento repozitář obsahuje aplikaci pro hraní piškvorek v jazyce Python. Aplikace slouží pro hraní piškvorek ve dvojici, nebo proti počítači, přičemž proti počítači lze vybrat obtížnost hraní ze dvou možností.
 
 📁 Obsah repozitáře
